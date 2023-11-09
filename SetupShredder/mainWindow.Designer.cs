@@ -31,7 +31,10 @@ namespace SetupShredder
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainWindow));
             this.basePanel = new System.Windows.Forms.Panel();
+            this.keywords_setDefaultKeywordButton = new System.Windows.Forms.Button();
             this.shredder_optionsPanel = new System.Windows.Forms.Panel();
+            this.option_resetDefaultToDefaultButton = new System.Windows.Forms.Button();
+            this.options_sendToBinButton = new System.Windows.Forms.CheckBox();
             this.options_logFilesToStorageButton = new System.Windows.Forms.CheckBox();
             this.options_label = new System.Windows.Forms.Label();
             this.shredder_filesListBox = new System.Windows.Forms.ListBox();
@@ -51,13 +54,13 @@ namespace SetupShredder
             this.shredder_gotofileButton = new System.Windows.Forms.Button();
             this.shredder_deleteButton = new System.Windows.Forms.Button();
             this.SetupShredderLabel = new System.Windows.Forms.Label();
-            this.options_sendToBinButton = new System.Windows.Forms.CheckBox();
             this.basePanel.SuspendLayout();
             this.shredder_optionsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // basePanel
             // 
+            this.basePanel.Controls.Add(this.keywords_setDefaultKeywordButton);
             this.basePanel.Controls.Add(this.shredder_optionsPanel);
             this.basePanel.Controls.Add(this.shredder_filesListBox);
             this.basePanel.Controls.Add(this.directory_browsePathButton);
@@ -80,9 +83,22 @@ namespace SetupShredder
             this.basePanel.Size = new System.Drawing.Size(776, 426);
             this.basePanel.TabIndex = 0;
             // 
+            // keywords_setDefaultKeywordButton
+            // 
+            this.keywords_setDefaultKeywordButton.BackColor = System.Drawing.Color.White;
+            this.keywords_setDefaultKeywordButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.keywords_setDefaultKeywordButton.Location = new System.Drawing.Point(68, 302);
+            this.keywords_setDefaultKeywordButton.Name = "keywords_setDefaultKeywordButton";
+            this.keywords_setDefaultKeywordButton.Size = new System.Drawing.Size(82, 30);
+            this.keywords_setDefaultKeywordButton.TabIndex = 20;
+            this.keywords_setDefaultKeywordButton.Text = "Set default";
+            this.keywords_setDefaultKeywordButton.UseVisualStyleBackColor = false;
+            this.keywords_setDefaultKeywordButton.Click += new System.EventHandler(this.keywords_setDefaultKeywordButton_Click);
+            // 
             // shredder_optionsPanel
             // 
             this.shredder_optionsPanel.BackColor = System.Drawing.Color.LightGray;
+            this.shredder_optionsPanel.Controls.Add(this.option_resetDefaultToDefaultButton);
             this.shredder_optionsPanel.Controls.Add(this.options_sendToBinButton);
             this.shredder_optionsPanel.Controls.Add(this.options_logFilesToStorageButton);
             this.shredder_optionsPanel.Controls.Add(this.options_label);
@@ -91,6 +107,30 @@ namespace SetupShredder
             this.shredder_optionsPanel.Size = new System.Drawing.Size(399, 423);
             this.shredder_optionsPanel.TabIndex = 3;
             this.shredder_optionsPanel.Visible = false;
+            // 
+            // option_resetDefaultToDefaultButton
+            // 
+            this.option_resetDefaultToDefaultButton.BackColor = System.Drawing.Color.White;
+            this.option_resetDefaultToDefaultButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.option_resetDefaultToDefaultButton.Location = new System.Drawing.Point(8, 393);
+            this.option_resetDefaultToDefaultButton.Name = "option_resetDefaultToDefaultButton";
+            this.option_resetDefaultToDefaultButton.Size = new System.Drawing.Size(259, 27);
+            this.option_resetDefaultToDefaultButton.TabIndex = 21;
+            this.option_resetDefaultToDefaultButton.Text = "Reset keywords default to default";
+            this.option_resetDefaultToDefaultButton.UseVisualStyleBackColor = false;
+            this.option_resetDefaultToDefaultButton.Click += new System.EventHandler(this.option_resetDefaultToDefaultButton_Click);
+            // 
+            // options_sendToBinButton
+            // 
+            this.options_sendToBinButton.AutoSize = true;
+            this.options_sendToBinButton.Checked = true;
+            this.options_sendToBinButton.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.options_sendToBinButton.Location = new System.Drawing.Point(8, 70);
+            this.options_sendToBinButton.Name = "options_sendToBinButton";
+            this.options_sendToBinButton.Size = new System.Drawing.Size(290, 17);
+            this.options_sendToBinButton.TabIndex = 2;
+            this.options_sendToBinButton.Text = "Send deleted files to recycle bin (otherwise permanently)";
+            this.options_sendToBinButton.UseVisualStyleBackColor = true;
             // 
             // options_logFilesToStorageButton
             // 
@@ -173,9 +213,9 @@ namespace SetupShredder
             // 
             this.keywords_resetButton.BackColor = System.Drawing.Color.White;
             this.keywords_resetButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.keywords_resetButton.Location = new System.Drawing.Point(6, 305);
+            this.keywords_resetButton.Location = new System.Drawing.Point(6, 302);
             this.keywords_resetButton.Name = "keywords_resetButton";
-            this.keywords_resetButton.Size = new System.Drawing.Size(144, 30);
+            this.keywords_resetButton.Size = new System.Drawing.Size(56, 30);
             this.keywords_resetButton.TabIndex = 13;
             this.keywords_resetButton.Text = "Reset";
             this.keywords_resetButton.UseVisualStyleBackColor = false;
@@ -233,10 +273,6 @@ namespace SetupShredder
             this.keywords_listbox.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.keywords_listbox.FormattingEnabled = true;
             this.keywords_listbox.ItemHeight = 16;
-            this.keywords_listbox.Items.AddRange(new object[] {
-            "setup",
-            "install",
-            "installer"});
             this.keywords_listbox.Location = new System.Drawing.Point(156, 170);
             this.keywords_listbox.Name = "keywords_listbox";
             this.keywords_listbox.Size = new System.Drawing.Size(215, 162);
@@ -323,18 +359,6 @@ namespace SetupShredder
             this.SetupShredderLabel.TabIndex = 0;
             this.SetupShredderLabel.Text = "Setup Shredder";
             // 
-            // options_sendToBinButton
-            // 
-            this.options_sendToBinButton.AutoSize = true;
-            this.options_sendToBinButton.Checked = true;
-            this.options_sendToBinButton.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.options_sendToBinButton.Location = new System.Drawing.Point(8, 70);
-            this.options_sendToBinButton.Name = "options_sendToBinButton";
-            this.options_sendToBinButton.Size = new System.Drawing.Size(290, 17);
-            this.options_sendToBinButton.TabIndex = 2;
-            this.options_sendToBinButton.Text = "Send deleted files to recycle bin (otherwise permanently)";
-            this.options_sendToBinButton.UseVisualStyleBackColor = true;
-            // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,6 +406,8 @@ namespace SetupShredder
         private System.Windows.Forms.Button shredder_deleteButton;
         private System.Windows.Forms.Button shredder_gotofileButton;
         private System.Windows.Forms.CheckBox options_sendToBinButton;
+        private System.Windows.Forms.Button keywords_setDefaultKeywordButton;
+        private System.Windows.Forms.Button option_resetDefaultToDefaultButton;
     }
 }
 

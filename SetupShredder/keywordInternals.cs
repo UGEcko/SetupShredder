@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 
 using SetupShredder;
+using System.IO;
 
 namespace SetupShredder
 {
@@ -41,14 +42,21 @@ namespace SetupShredder
 
         private void keywords_resetButton_Click(object sender, EventArgs e)
         {
+            string[] defaultLines = File.ReadAllLines(defaultPath);
             // Just copied from the Designer file, GOATED for resetting shit to default
             keywords_listbox.Items.Clear();
-            keywords_listbox.Items.AddRange(new object[] {
-            "Setup",
-            "Install",
-            "Installer"
-            });
+            foreach (string line in defaultLines)
+            {
+                keywords_listbox.Items.Add(line);
+            }
             logSS("Reset keywords to default");
+        }
+
+        private void keywords_setDefaultKeywordButton_Click(object sender, EventArgs e)
+        {
+            File.WriteAllText(defaultPath, string.Empty); // Overwrite the file so it can update only current keywords
+            Array.ForEach(keywords_listbox.Items.Cast<string>().ToArray(), updateDefault); // Change items to a string, then to an array to update to the default file
+            logSS("Set keywords");
         }
 
         private void keywords_listbox_SelectedIndexChanged(object sender, EventArgs e)

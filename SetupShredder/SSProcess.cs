@@ -19,6 +19,7 @@ namespace SetupShredder
         {
             // Turn keywords into usable array for foreach
             string[] keywordsArray = keywords_listbox.Items.Cast<string>().ToArray();
+            Console.WriteLine(keywordsArray);
 
             try
             {
@@ -66,18 +67,25 @@ namespace SetupShredder
             if(optionsToggle == false)
             {
                 optionsToggle = true;
-                logSS("Opening options panel " + optionsToggle);
+                logSS("Opening options panel...");
                 shredder_optionsPanel.Visible = true;
                 shredder_optionsButton.BackColor = Color.LightGray;
             } 
             else
             {
                 optionsToggle = false;
-                logSS("Closing options panel " + optionsToggle);
+                logSS("Closing options panel...");
                 shredder_optionsPanel.Visible = false;
                 shredder_optionsButton.BackColor = Color.White;
             }
             
+        }
+
+        private void option_resetDefaultToDefaultButton_Click(object sender, EventArgs e)
+        {
+            File.WriteAllText(defaultPath, string.Empty);
+            updateDefault("Setup\nInstall\nInstaller");
+            logSS("Reset keywords to default");
         }
 
         public string selectedFile = "";
