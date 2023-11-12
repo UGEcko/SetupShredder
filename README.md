@@ -7,20 +7,27 @@ Welcome to SetupShredder, a powerful tool to effortlessly delete installers, set
 1. **Download the Latest Version:** Grab the freshest release [here](https://github.com/UGEcko/SetupShredder/releases).
 
 2. **Open the Program:**
-   
-   ![SetupShredder](https://github.com/UGEcko/SetupShredder/assets/38820051/ac86c539-a7ff-4631-9bd4-2fc1d9172bdf)
+    
+   ![image](https://github.com/UGEcko/SetupShredder/assets/38820051/bb7271ac-ceee-44cf-99c7-93e32ba558ca)
+
 
 4. **Explore the Interface:**
    - **Directory:** Define your target directory with ease, either by typing or browsing. A validation feature ensures precision.
-     ![Directory](https://github.com/UGEcko/SetupShredder/assets/38820051/ee260e28-fb55-4749-a954-579ca39a84fd)
+     ![image](https://github.com/UGEcko/SetupShredder/assets/38820051/ad26a003-fbb4-40f9-b723-3224b641d983)
+
+
    - **Keywords:** Add and remove keywords seamlessly for precise operations. The sky's the limit, but wisdom in keyword count is advised.
-     ![Keywords](https://github.com/UGEcko/SetupShredder/assets/38820051/a6e96988-8475-48ba-bd35-66262bb573fd)
+     ![image](https://github.com/UGEcko/SetupShredder/assets/38820051/7799b5a9-9374-4c97-8218-999aa60e2579)
+
+
    - **Files List:** View, select, and perform functions like 'Go to file' or 'Delete' effortlessly.
-     ![Files List](https://github.com/UGEcko/SetupShredder/assets/38820051/2c221e82-aa14-4b96-ad8d-f2def8ac34a1)
+     ![image](https://github.com/UGEcko/SetupShredder/assets/38820051/2bf643c8-11c4-482c-9cb8-0e47e71e3a22)
+
 
 5. **Options Page:**
    - Customize your experience with options like logging found files and choosing permanent deletion.
-     ![Options Page](https://github.com/UGEcko/SetupShredder/assets/38820051/2c221e82-aa14-4b96-ad8d-f2def8ac34a1)
+     ![image](https://github.com/UGEcko/SetupShredder/assets/38820051/5753f788-2557-4f24-b6c1-e14c82327649)
+
 
 ## How to Operate Setup Shredder
 
