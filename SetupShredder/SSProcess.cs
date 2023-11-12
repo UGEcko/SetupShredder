@@ -19,13 +19,10 @@ namespace SetupShredder
         {
             // Turn keywords into usable array for foreach
             string[] keywordsArray = keywords_listbox.Items.Cast<string>().ToArray();
-            Console.WriteLine(keywordsArray);
-
             try
             {
                 logSS("Attempting to shred some installers...");
                 shredder_filesListBox.Items.Clear();
-
                 var files = Directory.GetFiles(directory_textBox.Text, "*.*", System.IO.SearchOption.TopDirectoryOnly);
                 List<string> filteredFiles = new List<string>();
 
