@@ -81,7 +81,7 @@ namespace SetupShredder
         private void option_resetDefaultToDefaultButton_Click(object sender, EventArgs e)
         {
             File.WriteAllText(defaultPath, string.Empty);
-            updateDefault("Setup\nInstall\nInstaller");
+            updateDefault("Setup\nInstall\nInstaller\nmsi\n7z\nzip");
             logSS("Reset keywords to default");
         }
 
